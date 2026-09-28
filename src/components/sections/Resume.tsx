@@ -27,70 +27,75 @@ export function Resume() {
 
         <div ref={ref} className="max-w-3xl mx-auto">
           <motion.div
-            className="rounded-2xl bg-card/50 border border-border/50 overflow-hidden"
+            className="clip-corners bg-card/70 border border-neon-violet/25 backdrop-blur-sm overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <div className="aspect-[1/1.4] bg-gradient-to-br from-royal-blue/10 via-indigo/10 to-cyan/10 flex items-center justify-center border-b border-border/50">
+            <div className="aspect-[1/1.4] bg-gradient-to-br from-neon-pink/10 via-neon-violet/10 to-neon-cyan/10 grid-flat flex items-center justify-center border-b border-neon-violet/20">
               <div className="text-center">
-                <FileText className="w-16 h-16 text-royal-blue/40 mx-auto mb-4" />
-                <h3 className="text-xl font-heading font-bold text-gradient">
-                  Angel Zee Ngoh - Resume
+                <FileText className="w-16 h-16 text-neon-pink/50 mx-auto mb-4" />
+                <h3 className="text-xl font-heading font-bold uppercase tracking-wide text-gradient">
+                  Angel Zee Ngoh — Resume
                 </h3>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm font-mono text-neon-muted mt-2">
                   Software Engineer & Full-Stack Developer
                 </p>
               </div>
             </div>
 
             <div className="p-6 space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-xs font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                  <h4 className="hud-label text-neon-cyan mb-3">
                     Experience
                   </h4>
                   <ul className="space-y-2">
-                    {["Software Developer - Digimark Consulting", "Engineer Intern - NFC Bank", "Software Engineering Student - YIBS"].map(
-                      (item) => (
-                        <li key={item} className="text-sm text-foreground flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-royal-blue" />
-                          {item}
-                        </li>
-                      )
-                    )}
+                    {[
+                      "Software Developer — Digimark Consulting",
+                      "Engineering Intern — NFC Bank SA",
+                      "Freelance Software Developer",
+                    ].map((item) => (
+                      <li key={item} className="text-sm text-foreground flex items-start gap-2">
+                        <span aria-hidden="true" className="text-neon-lime font-mono mt-0.5">&gt;</span>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-xs font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                  <h4 className="hud-label text-neon-cyan mb-3">
                     Education
                   </h4>
                   <ul className="space-y-2">
-                    {["Software Engineering - YIBS", "AI Certifications - Microsoft", "Prompt Engineering - Google AI"].map(
-                      (item) => (
-                        <li key={item} className="text-sm text-foreground flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-royal-blue" />
-                          {item}
-                        </li>
-                      )
-                    )}
+                    {[
+                      "B.Sc. Software Engineering — YIBS, 2025–2026",
+                      "HND Computer Software Engineering — YIBS, 2023–2025",
+                      "24+ Microsoft & industry certifications",
+                    ].map((item) => (
+                      <li key={item} className="text-sm text-foreground flex items-start gap-2">
+                        <span aria-hidden="true" className="text-neon-lime font-mono mt-0.5">&gt;</span>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
 
               <div>
-                <h4 className="text-xs font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                  Skills
+                <h4 className="hud-label text-neon-cyan mb-3">
+                  Core Stack
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "React", "Next.js", "React Native", "TypeScript", "Java",
-                    "Python", "Tailwind CSS", "Docker", "Git", "PostgreSQL",
-                    "MySQL", "Prompt Engineering", "Google Gemini", "Vertex AI",
+                    "TypeScript", "JavaScript", "Python", "Java", "Kotlin", "SQL",
+                    "React", "Next.js", "Vite", "Tailwind CSS",
+                    "Node.js", "Express", "NestJS", "REST APIs",
+                    "PostgreSQL", "MySQL", "Supabase", "Docker",
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 rounded-lg text-xs font-medium bg-muted/30 text-muted-foreground border border-border/30"
+                      className="px-2.5 py-1 clip-corners-sm font-mono text-xs text-neon-muted bg-void-3/60 border border-neon-violet/20"
                     >
                       {skill}
                     </span>
@@ -101,14 +106,14 @@ export function Resume() {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button
                   onClick={handleDownload}
-                  className="flex-1 rounded-full gap-2"
+                  className="flex-1 gap-2 h-11"
                 >
                   <Download className="w-4 h-4" />
                   Download Resume (PDF)
                 </Button>
                 <Button
-                  variant="outline"
-                  className="flex-1 rounded-full gap-2"
+                  variant="neon"
+                  className="flex-1 gap-2 h-11"
                   onClick={() => {
                     const doc = generateResume();
                     const blob = doc.output("bloburl");

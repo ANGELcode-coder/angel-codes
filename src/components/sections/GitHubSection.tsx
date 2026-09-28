@@ -69,34 +69,38 @@ export function GitHubSection() {
                   href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-5 rounded-2xl bg-card/50 border border-border/50 hover:border-royal-blue/30 transition-all duration-300 group block"
+                  className="relative p-5 clip-corners-sm bg-card/70 border border-neon-violet/20 hover:border-neon-pink/50 hover:shadow-[0_0_26px_-6px_rgba(255,45,120,0.5)] transition-all duration-300 group block"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: i * 0.1, duration: 0.4 }}
                   whileHover={{ y: -4 }}
                 >
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-neon-cyan/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                  />
                   <div className="flex items-center gap-2 mb-3">
-                    <SiGithub className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                    <span className="text-sm font-mono font-medium text-foreground truncate">
+                    <SiGithub className="w-4 h-4 text-neon-pink flex-shrink-0" />
+                    <span className="text-sm font-mono text-foreground group-hover:text-neon-pink transition-colors truncate">
                       {repo.name}
                     </span>
                   </div>
                   <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
                     {repo.description}
                   </p>
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-3 text-xs font-mono text-neon-muted">
                     {repo.lang !== "N/A" && (
                       <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-royal-blue" />
+                        <span className="w-2 h-2 rounded-full bg-neon-lime" />
                         {repo.lang}
                       </span>
                     )}
                     <span className="flex items-center gap-1">
-                      <Star className="w-3 h-3" />
+                      <Star className="w-3 h-3 text-neon-amber" />
                       {repo.stars}
                     </span>
                     <span className="flex items-center gap-1">
-                      <GitFork className="w-3 h-3" />
+                      <GitFork className="w-3 h-3 text-neon-cyan" />
                       {repo.forks}
                     </span>
                   </div>
@@ -116,7 +120,7 @@ export function GitHubSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="outline" className="rounded-full gap-2">
+              <Button variant="neon" className="gap-2 h-11">
                 <SiGithub className="w-4 h-4" />
                 View All Repositories
               </Button>

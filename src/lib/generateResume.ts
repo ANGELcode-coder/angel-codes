@@ -10,12 +10,12 @@ export function generateResume() {
 
   function addSection(title: string) {
     y += 6;
-    doc.setFillColor(37, 99, 235);
+    doc.setFillColor(255, 45, 120);
     doc.rect(margin, y, contentWidth, 0.8, "F");
     y += 4;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(13);
-    doc.setTextColor(37, 99, 235);
+    doc.setTextColor(214, 10, 88);
     doc.text(title.toUpperCase(), margin, y);
     y += 2;
     doc.setFont("helvetica", "normal");
@@ -50,30 +50,37 @@ export function generateResume() {
     });
   }
 
-  doc.setFillColor(15, 23, 42);
+  doc.setFillColor(4, 3, 10);
   doc.rect(0, 0, pageWidth, 45, "F");
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(22);
   doc.setTextColor(255, 255, 255);
-  doc.text(personalInfo.name.toUpperCase(), pageWidth / 2, 22, { align: "center" });
+  doc.text(personalInfo.name.toUpperCase(), pageWidth / 2, 20, { align: "center" });
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
+  doc.setTextColor(0, 245, 255);
+  doc.text("Software Engineer & Full-Stack Developer", pageWidth / 2, 28, { align: "center" });
   doc.setTextColor(200, 200, 200);
-  doc.text("Software Engineer & Full-Stack Developer", pageWidth / 2, 32, { align: "center" });
-  doc.text(`${personalInfo.email}  |  ${personalInfo.location}  |  github.com/ANGELcode-coder`, pageWidth / 2, 40, { align: "center" });
+  doc.setFontSize(9);
+  doc.text(
+    `${personalInfo.email}  |  ${personalInfo.phone}  |  ${personalInfo.location}`,
+    pageWidth / 2,
+    35,
+    { align: "center" }
+  );
+  doc.text(
+    "github.com/ANGELcode-coder  |  linkedin.com/in/angel-zee-ngoh",
+    pageWidth / 2,
+    41,
+    { align: "center" }
+  );
 
   y = 52;
 
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-  doc.setTextColor(80, 80, 80);
-  const summaryLines = doc.splitTextToSize(personalInfo.tagline, contentWidth);
-  summaryLines.forEach((line: string) => {
-    doc.text(line, margin, y);
-    y += 5;
-  });
+  addText(personalInfo.tagline, 10, false, [80, 80, 80]);
+  y += 3;
 
   addSection("Experience");
   experiences.forEach((exp) => {
@@ -105,7 +112,7 @@ export function generateResume() {
     }
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.setTextColor(37, 99, 235);
+    doc.setTextColor(214, 10, 88);
     doc.text(cat.title, skillX, y);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8);

@@ -52,33 +52,49 @@ export function Skills() {
           {skillCategories.map((category) => (
             <motion.div
               key={category.title}
-              className="group relative p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-royal-blue/30 transition-all duration-500"
+              className="group relative p-6 clip-corners-sm bg-card/70 border border-neon-violet/20 backdrop-blur-sm hover:border-neon-pink/50 hover:shadow-[0_0_28px_-6px_rgba(255,45,120,0.5)] transition-all duration-500"
               variants={cardVariants}
               whileHover={{
                 y: -6,
                 transition: { duration: 0.3 },
               }}
             >
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+              {/* Top accent bar keyed to the category colour */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-[2px] opacity-60 group-hover:opacity-100 transition-opacity"
                 style={{
-                  background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${category.color}15, transparent 40%)`,
+                  background: `linear-gradient(to right, transparent, ${category.color}, transparent)`,
                 }}
               />
 
-              <div className="flex items-center gap-3 mb-4">
+              {/* Corner brackets */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background:
+                    "linear-gradient(to right, currentColor 1px, transparent 1px) 0 0 / 12px 1px no-repeat, linear-gradient(to bottom, currentColor 1px, transparent 1px) 0 0 / 1px 12px no-repeat, linear-gradient(to left, currentColor 1px, transparent 1px) 100% 100% / 12px 1px no-repeat, linear-gradient(to top, currentColor 1px, transparent 1px) 100% 100% / 1px 12px no-repeat",
+                  color: category.color,
+                }}
+              />
+
+              <div className="flex items-center gap-3 mb-5">
                 <motion.div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: `${category.color}20` }}
-                  whileHover={{ rotate: 15, scale: 1.1 }}
+                  className="w-9 h-9 clip-corners-sm flex items-center justify-center shrink-0"
+                  style={{
+                    backgroundColor: `${category.color}1a`,
+                    border: `1px solid ${category.color}55`,
+                  }}
+                  whileHover={{ rotate: 45, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div
-                    className="w-3 h-3 rounded-full"
+                    className="w-2.5 h-2.5 rotate-45"
                     style={{ backgroundColor: category.color }}
                   />
                 </motion.div>
-                <h3 className="text-lg font-heading font-semibold text-foreground">
+                <h3 className="text-base font-heading font-bold uppercase tracking-widest text-foreground">
                   {category.title}
                 </h3>
               </div>
@@ -87,11 +103,11 @@ export function Skills() {
                 {category.skills.map((skill, si) => (
                   <motion.span
                     key={skill}
-                    className="px-3 py-1.5 rounded-lg text-sm font-medium bg-muted/30 text-muted-foreground border border-border/30 group-hover:border-royal-blue/20 group-hover:text-royal-blue transition-all duration-300"
+                    className="px-2.5 py-1 clip-corners-sm font-mono text-xs text-neon-muted border border-neon-violet/20 bg-void-3/60 group-hover:border-neon-pink/40 group-hover:text-neon-pink transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.3 + si * 0.05, duration: 0.3 }}
-                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileHover={{ scale: 1.06, y: -2 }}
                   >
                     {skill}
                   </motion.span>

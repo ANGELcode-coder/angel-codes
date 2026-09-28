@@ -3,5 +3,5 @@
 import { CursorTrail } from "@/components/ui/CursorTrail";
 
 export function CursorTrailWrapper() {
-  return <CursorTrail color="#2563eb" dotCount={50} dotSize={4} maxOpacity={0.4} springStiffness={0.06} springDamping={0.85} />;
+  return <CursorTrail color="#ff2d78" dotCount={50} dotSize={4} maxOpacity={0.4} springStiffness={0.06} springDamping={0.85} />;
 }

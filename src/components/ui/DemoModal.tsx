@@ -22,31 +22,34 @@ export function DemoModal({ url, title, open, onClose }: DemoModalProps) {
         exit={{ opacity: 0 }}
       >
         <div
-          className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+          className="absolute inset-0 bg-void/85 backdrop-blur-sm"
           onClick={onClose}
         />
         <motion.div
-          className="relative w-full max-w-5xl h-[80vh] rounded-2xl overflow-hidden bg-card border border-border/50 shadow-2xl"
+          className="relative w-full max-w-5xl h-[80vh] clip-corners overflow-hidden bg-void-2 border border-neon-pink/40 shadow-[0_0_60px_-10px_rgba(255,45,120,0.5)]"
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3 }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={title}
         >
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border/50 bg-card">
-            <span className="text-sm font-medium text-foreground truncate">{title}</span>
+          <div className="flex items-center justify-between px-4 py-3 border-b border-neon-violet/25 bg-void-2">
+            <span className="hud-label text-neon-cyan truncate">{title}</span>
             <div className="flex items-center gap-2">
               <a
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                className="p-1.5 clip-corners-sm hover:bg-neon-cyan/10 text-neon-muted hover:text-neon-cyan transition-colors"
                 aria-label="Open in new tab"
               >
                 <ExternalLink className="w-4 h-4" />
               </a>
               <button
                 onClick={onClose}
-                className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                className="p-1.5 clip-corners-sm hover:bg-neon-pink/10 text-neon-muted hover:text-neon-pink transition-colors cursor-pointer"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />

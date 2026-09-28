@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       subject: `Portfolio Contact: ${subject}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2563eb;">New Portfolio Contact Message</h2>
+          <h2 style="color: #ff2d78;">New Portfolio Contact Message</h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 8px 12px; font-weight: bold; color: #374151; border-bottom: 1px solid #e5e7eb;">Name</td>

@@ -12,7 +12,7 @@ interface GlowFollowerProps {
 export function GlowFollower({
   children,
   className,
-  color = "rgba(37, 99, 235, 0.08)",
+  color = "rgba(255, 45, 120, 0.09)",
   size = 400,
 }: GlowFollowerProps) {
   const ref = useRef<HTMLDivElement>(null);

@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-import { useTheme } from "next-themes";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
@@ -20,12 +18,6 @@ import { Resume } from "@/components/sections/Resume";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
-  const { setTheme } = useTheme();
-
-  useEffect(() => {
-    setTheme("dark");
-  }, [setTheme]);
-
   return (
     <>
       <ScrollProgress />

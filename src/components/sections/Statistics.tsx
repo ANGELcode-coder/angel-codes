@@ -25,31 +25,33 @@ export function Statistics() {
 
   return (
     <section ref={ref} className="py-16 relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-royal-blue/5 via-transparent to-cyan/5" />
+      <div className="absolute inset-0 bg-gradient-to-r from-neon-pink/5 via-transparent to-neon-cyan/5" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neon-violet/40 to-transparent"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+          className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {statistics.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="text-center p-6 md:p-8 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm group"
+              className="relative text-center p-6 md:p-8 clip-corners-sm bg-card/70 border border-neon-violet/20 backdrop-blur-sm group hover:border-neon-pink/50 transition-colors duration-300"
               variants={cardVariants}
               custom={i}
-              whileHover={{
-                y: -6,
-                borderColor: "#2563EB40",
-                boxShadow: "0 20px 40px rgba(37,99,235,0.1)",
-              }}
+              whileHover={{ y: -6 }}
             >
-              <div className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gradient mb-2">
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-neon-pink to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
+              />
+              <div className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gradient mb-3">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-sm text-muted-foreground font-medium">
-                {stat.label}
-              </div>
+              <div className="hud-label text-neon-muted">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

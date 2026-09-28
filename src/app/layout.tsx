@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
 import { Providers } from "./providers";
 import { CursorTrailWrapper } from "@/components/layout/CursorTrailWrapper";
+import { ScanlineOverlay } from "@/components/ui/ScanlineOverlay";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const chakraPetch = Chakra_Petch({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-chakra-petch",
   display: "swap",
 });
 
@@ -80,7 +82,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} dark`}
+      className={`${chakraPetch.variable} ${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -100,6 +102,7 @@ export default function RootLayout({
         <Providers>
           <CursorTrailWrapper />
           {children}
+          <ScanlineOverlay />
         </Providers>
       </body>
     </html>

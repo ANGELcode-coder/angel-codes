@@ -1,11 +1,19 @@
 export const personalInfo = {
   name: "Angel Zee Ngoh",
-  tagline: "Building scalable software that solves real-world problems.",
+  tagline:
+    "Full-stack engineer building secure, scalable banking and fintech systems — from REST APIs and databases to production deployments.",
   email: "ngohangelzee@gmail.com",
+  phone: "+237 681 286 500",
   location: "Yaoundé, Cameroon",
+  roles: [
+    "Software Engineering Professional",
+    "Full-Stack Developer",
+    "Backend & REST API Engineer",
+    "Banking Technology Enthusiast",
+  ],
   social: {
     github: "https://github.com/ANGELcode-coder",
-    linkedin: "https://linkedin.com/in/angelngoh",
+    linkedin: "https://linkedin.com/in/angel-zee-ngoh",
     devto: "https://dev.to/angelngoh",
     email: "mailto:ngohangelzee@gmail.com",
   },
@@ -13,101 +21,120 @@ export const personalInfo = {
 
 export const statistics = [
   { label: "Certificates", value: 24, suffix: "+" },
-  { label: "Projects", value: 15, suffix: "+" },
-  { label: "Years Learning", value: 3, suffix: "+" },
+  { label: "Projects Shipped", value: 18, suffix: "+" },
+  { label: "Years Building", value: 3, suffix: "+" },
   { label: "Passion", value: 100, suffix: "%" },
 ];
 
 export const featuredTech = [
   { name: "React", icon: "SiReact" },
   { name: "Next.js", icon: "SiNextdotjs" },
-  { name: "React Native", icon: "SiReact" },
   { name: "TypeScript", icon: "SiTypescript" },
   { name: "Java", icon: "FaJava" },
   { name: "Python", icon: "SiPython" },
+  { name: "Node.js", icon: "SiNodedotjs" },
+  { name: "PostgreSQL", icon: "SiPostgresql" },
   { name: "Tailwind", icon: "SiTailwindcss" },
   { name: "Docker", icon: "SiDocker" },
   { name: "Git", icon: "SiGit" },
-  { name: "MySQL", icon: "SiMysql" },
-  { name: "PostgreSQL", icon: "SiPostgresql" },
-  { name: "TensorFlow", icon: "SiTensorflow" },
+  { name: "Vercel", icon: "SiVercel" },
+  { name: "React Native", icon: "SiReact" },
 ];
 
 export const skillCategories = [
   {
-    title: "Frontend",
-    skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind", "Framer Motion"],
-    color: "#2563EB",
+    title: "Languages",
+    skills: ["JavaScript", "TypeScript", "Python", "PHP", "Java", "Kotlin", "SQL"],
+    color: "#ff2d78",
   },
   {
-    title: "Mobile",
-    skills: ["React Native", "Expo", "Android Studio", "React Native CLI"],
-    color: "#06B6D4",
+    title: "Frontend",
+    skills: ["React", "Next.js", "Vite", "Tailwind CSS", "Bootstrap", "HTML/CSS", "Framer Motion"],
+    color: "#00f5ff",
   },
   {
     title: "Backend",
-    skills: ["Java", "Node.js", "Python", "PHP", "REST APIs", "Express.js", "Django"],
-    color: "#4F46E5",
+    skills: ["Node.js", "Express", "NestJS", "REST APIs", "JWT Auth", "RBAC", "Python"],
+    color: "#8b5cf6",
   },
   {
     title: "Databases",
-    skills: ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
-    color: "#06B6D4",
+    skills: ["PostgreSQL", "MySQL", "Supabase", "MongoDB", "Database Design"],
+    color: "#00f5ff",
+  },
+  {
+    title: "Mobile",
+    skills: ["React Native", "Expo", "Android Studio", "Kotlin"],
+    color: "#c6ff00",
   },
   {
     title: "AI & Prompt Engineering",
     skills: [
-      "Python", "NumPy", "Pandas", "Scikit-learn", "TensorFlow", "Generative AI",
-      "Prompt Engineering", "Google Gemini", "Vertex AI", "Google AI Studio",
-      "Gemma", "Google Colab",
+      "Generative AI", "Prompt Engineering", "Google Gemini", "Vertex AI",
+      "TensorFlow", "Pandas", "Scikit-learn", "Google Colab",
     ],
-    color: "#8B5CF6",
+    color: "#8b5cf6",
   },
   {
-    title: "Cloud & DevOps",
-    skills: ["Docker", "GitHub", "Linux", "Firebase", "Vercel"],
-    color: "#EC4899",
+    title: "Cloud & Deployment",
+    skills: ["Vercel", "Netlify", "Railway", "Docker", "GitHub", "Linux", "Firebase"],
+    color: "#ffb020",
   },
   {
     title: "Tools & Methods",
-    skills: ["Git", "VS Code", "Postman", "Figma", "Agile", "JWT"],
-    color: "#F59E0B",
+    skills: ["Git", "GitHub", "VS Code", "Postman", "DBeaver", "Figma", "Agile", "Technical Writing"],
+    color: "#00f5ff",
   },
 ];
 
 export const experiences = [
   {
     title: "Software Developer",
-    company: "Digimark Consulting",
+    company: "Digimark Consulting SARL",
     period: "2025 - Present",
+    location: "Yaoundé, Cameroon",
     achievements: [
-      "Developed and maintained full-stack web applications for clients",
-      "Built RESTful APIs and authentication services using Express.js and PostgreSQL",
-      "Implemented secure JWT-based auth systems and role-based access control",
+      "Develop and support full-stack software solutions spanning frontend interfaces, backend services, databases and APIs",
+      "Work across authentication, application workflows, testing, debugging and technical documentation",
+      "Contribute to management platforms, dashboards and internal digital solutions using Git/GitHub and modern tooling",
     ],
-    technologies: ["React", "Next.js", "Node.js", "PostgreSQL", "Docker", "Express.js"],
+    technologies: ["React", "Next.js", "Node.js", "Express", "NestJS", "PostgreSQL", "Docker"],
   },
   {
-    title: "Engineer Intern",
-    company: "NFC Bank",
-    period: "2024",
+    title: "Engineering Intern",
+    company: "NFC Bank SA",
+    period: "Jul - Sep 2025",
+    location: "Cameroon",
     achievements: [
-      "Developed a loan management system for processing and tracking bank loans",
-      "Built internal dashboards for monitoring loan applications and repayments",
-      "Assisted in software deployment, testing, and technical documentation",
+      "Completed an engineering internship inside a live banking environment, gaining hands-on exposure to enterprise technology workflows",
+      "Gained professional familiarity with the operational context in which secure, reliable digital banking systems are delivered",
+      "Applied software engineering practices — requirements, testing, deployment discipline and documentation — within a regulated organisation",
     ],
-    technologies: ["Java", "Spring Boot", "MySQL", "Git"],
+    technologies: ["Banking Systems", "Secure Development", "Enterprise Workflows", "Documentation"],
   },
   {
-    title: "Software Engineering Student",
-    company: "YIBS - Yaounde International Business School",
-    period: "2023 - 2024",
+    title: "Freelance Software Developer",
+    company: "Project-based",
+    period: "Ongoing",
+    location: "Yaoundé, Cameroon",
     achievements: [
-      "Completed coursework in software engineering principles",
-      "Built academic projects focusing on full-stack development",
-      "Participated in hackathons and coding competitions",
+      "Build web applications, dashboards, APIs and digital platforms for practical business and academic requirements",
+      "Handle frontend/backend implementation, database connectivity, testing and deployment across projects",
+      "Work directly with clients to translate requirements into working, documented software",
     ],
-    technologies: ["Python", "Java", "JavaScript", "HTML/CSS"],
+    technologies: ["JavaScript", "Node.js", "React", "PostgreSQL", "REST APIs", "Vercel"],
+  },
+  {
+    title: "B.Sc. Software Engineering",
+    company: "YIBS — Yaoundé International Business School",
+    period: "2025 - 2026",
+    location: "Yaoundé, Cameroon",
+    achievements: [
+      "Studied software engineering principles, systems design and enterprise application development",
+      "Led student technology initiatives and organised Hackathon 2026 at YIBS (planning, coordination, sponsorship, engagement)",
+      "Built academic full-stack projects and competed in hackathons and coding challenges",
+    ],
+    technologies: ["Software Engineering", "Systems Design", "Project Management"],
   },
 ];
 
@@ -334,14 +361,107 @@ export const projects = [
       "Mastered the Next.js App Router pattern, server components, and database integration patterns.",
     screenshots: ["/projects/dashboard-1.png"],
   },
+  {
+    title: "Afrilink Pay",
+    tagline: "Unified wallet & mobile money platform for African markets",
+    description:
+      "A modular fintech platform concept unifying wallet transfers, mobile-money top-up and withdrawal, identity verification and administration across Cameroon, Nigeria and Kenya.",
+    problem:
+      "Mobile money ecosystems in African markets are fragmented — each operator runs a closed loop, forcing users and businesses into multiple apps and balances.",
+    solution:
+      "Designed a modular wallet platform with a shared ledger, pluggable mobile-money adapters per country, tiered KYC/AML checks and a merchant settlement dashboard.",
+    features: [
+      "Unified wallet with transfer, top-up and withdrawal flows",
+      "Country-specific mobile money adapters (CMR, NGA, KEN)",
+      "Tiered KYC / AML checks and transaction limits",
+      "Merchant settlement and reconciliation dashboard",
+      "Role-based administration and audit logging",
+    ],
+    technologies: ["Node.js", "NestJS", "PostgreSQL", "REST APIs", "KYC/AML", "RBAC"],
+    github: "#",
+    live: "#",
+    lessonsLearned:
+      "Modelled ledger invariants, idempotent payment handling and compliance requirements the way a real fintech backend has to.",
+    screenshots: [],
+  },
+  {
+    title: "ILLUNEX",
+    tagline: "Solar energy & intelligent power management platform",
+    description:
+      "An integrated energy platform combining solar generation, battery storage, intelligent power management and professional maintenance services to deliver reliable, sustainable electricity.",
+    problem:
+      "Solar installations fail quietly: without monitoring, underperforming panels and failing batteries go unnoticed until output drops.",
+    solution:
+      "Built a platform that pairs live generation and storage telemetry with automated power-management rules and scheduled professional maintenance workflows.",
+    features: [
+      "Live solar generation and battery storage monitoring",
+      "Intelligent load and power management rules",
+      "Automated alerts for underperformance and faults",
+      "Professional maintenance scheduling and job tracking",
+      "Customer-facing usage and savings reporting",
+    ],
+    technologies: ["Next.js", "TypeScript", "REST APIs", "PostgreSQL", "Tailwind"],
+    github: "https://github.com/ANGELcode-coder/ILLUNEX",
+    live: "#",
+    lessonsLearned:
+      "Turned physical infrastructure telemetry into software: modelling device state, fault conditions and service lifecycles end to end.",
+    screenshots: [],
+  },
+  {
+    title: "rentalsol",
+    tagline: "Rental & booking platform for houses",
+    description:
+      "A web application for listing, searching and booking rental properties, with property management, availability calendars and tenant enquiries.",
+    problem:
+      "Finding and managing rental housing relies on scattered listings and manual back-and-forth, which is slow for tenants and landlords alike.",
+    solution:
+      "Built a searchable listings platform with detailed property pages, availability calendars, an enquiry/booking flow and a landlord dashboard for managing their inventory.",
+    features: [
+      "Property listings with search and filtering",
+      "Detailed property pages with photo galleries",
+      "Availability calendar and booking enquiries",
+      "Landlord dashboard for managing listings",
+      "Full CRUD backend with authentication",
+    ],
+    technologies: ["JavaScript", "Node.js", "Express", "MongoDB", "REST APIs"],
+    github: "https://github.com/ANGELcode-coder/rentalsol",
+    live: "#",
+    lessonsLearned:
+      "Practised full CRUD architecture, relational data modelling and image-heavy listing UX from search through to enquiry.",
+    screenshots: ["/projects/rental-1.png"],
+  },
+  {
+    title: "Task Manager",
+    tagline: "Full-stack task management application",
+    description:
+      "A full-stack task manager with frontend/backend separation, REST API integration, database connectivity, automated testing and cloud deployment.",
+    problem:
+      "Managing work needs authentication, per-user data isolation and a dependable API boundary between client and server.",
+    solution:
+      "Built a separated frontend and backend with JWT authentication, role-based access control, REST resources for tasks, and automated API tests before deployment.",
+    features: [
+      "JWT authentication with role-based access control",
+      "Task CRUD with filtering and status tracking",
+      "Clean separation between frontend and REST API",
+      "Automated API and system testing",
+      "Cloud deployment with environment configuration",
+    ],
+    technologies: ["React", "Node.js", "Express", "PostgreSQL", "JWT", "REST APIs"],
+    github: "https://github.com/ANGELcode-coder/task-manager-capstone",
+    live: "#",
+    lessonsLearned:
+      "Reinforced API contract design, auth middleware, input validation and deployment with environment configuration.",
+    screenshots: [],
+  },
 ];
 
 export const timelineEvents = [
-  { year: "2023", event: "Started Software Engineering at YIBS" },
-  { year: "2024", event: "Engineer Intern at NFC Bank — Loan Management System" },
-  { year: "2025", event: "Software Developer at Digimark Consulting" },
-  { year: "2026", event: "16+ Microsoft Certifications & DID Refugee Project" },
-  { year: "Future", event: "Building products that impact Africa" },
+  { year: "2023", event: "Started Computer Software Engineering at YIBS" },
+  { year: "2025", event: "Engineering Internship at NFC Bank — banking systems exposure" },
+  { year: "2025", event: "Joined Digimark Consulting as Software Developer" },
+  { year: "2026", event: "B.Sc. Software Engineering & 24+ Microsoft certifications" },
+  { year: "2026", event: "Organised Hackathon 2026 at YIBS" },
+  { year: "Future", event: "Building secure fintech products for Africa" },
 ];
 
 export const navLinks = [

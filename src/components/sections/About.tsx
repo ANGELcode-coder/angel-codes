@@ -28,7 +28,11 @@ export function About() {
             transition={{ duration: 0.7 }}
           >
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl border border-border/50 overflow-hidden">
+              {/* Rotating neon ring around the portrait */}
+              <div className="ring-conic absolute -inset-3 clip-corners">
+                <div className="ring-conic-after" />
+              </div>
+              <div className="relative w-64 h-64 md:w-80 md:h-80 clip-corners overflow-hidden border border-neon-violet/30 bg-void-2">
                 <Image
                   src="/profile.jpg"
                   alt="Angel Zee Ngoh"
@@ -36,9 +40,14 @@ export function About() {
                   height={320}
                   className="w-full h-full object-cover"
                 />
+                {/* Neon duotone wash */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(255,45,120,0.28),transparent_55%,rgba(0,245,255,0.28))] mix-blend-color"
+                />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-xl bg-royal-blue/10 border border-royal-blue/30 flex items-center justify-center backdrop-blur-sm">
-                <span className="text-2xl font-heading font-bold text-gradient">&lt;/&gt;</span>
+              <div className="absolute -bottom-5 -right-5 w-24 h-24 clip-corners bg-neon-pink/10 border border-neon-pink/40 flex items-center justify-center backdrop-blur-sm glow">
+                <span className="text-2xl font-heading font-bold text-neon-pink">&lt;/&gt;</span>
               </div>
             </div>
           </motion.div>
@@ -51,12 +60,22 @@ export function About() {
               transition={{ duration: 0.7 }}
             >
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
-                My journey into software engineering started with curiosity about how digital products are built. Since then, I&apos;ve developed applications ranging from management systems to decentralized identity solutions and AI-powered mobile apps. I specialize in full-stack development with React, Next.js, React Native, and Java Spring Boot, while continuously expanding into cloud technologies and machine learning. I enjoy transforming ideas into scalable software that creates real-world impact, particularly for African communities.
+                I&apos;m a Computer Engineering student and hands-on software developer with practical
+                experience across full-stack development, REST APIs, databases, authentication,
+                testing and deployment. My work spans management platforms, dashboards and internal
+                digital solutions — including an engineering internship at NFC Bank that exposed me
+                to how enterprise banking technology is actually delivered.
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
+                I&apos;m drawn to banking technology and digital financial services: secure
+                authentication, role-based access control, reliable backends and payment-oriented
+                system thinking. I enjoy turning ideas into scalable software that creates real-world
+                impact, particularly for African communities.
               </p>
             </motion.div>
 
             <div className="relative">
-              <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-royal-blue via-cyan to-transparent" />
+              <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-neon-pink via-neon-cyan to-transparent" />
 
               {timelineEvents.map((event, i) => (
                 <motion.div
@@ -66,12 +85,10 @@ export function About() {
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: i * 0.15, duration: 0.5 }}
                 >
-                  <div className="absolute left-2.5 top-1 w-3 h-3 rounded-full bg-royal-blue border-2 border-background z-10" />
+                  <div className="absolute left-2 top-1 w-3 h-3 rotate-45 bg-neon-lime border-2 border-background z-10 shadow-[0_0_10px_rgba(198,255,0,0.9)]" />
                   <div>
-                    <span className="text-sm font-heading font-bold text-gradient">
-                      {event.year}
-                    </span>
-                    <p className="text-foreground font-medium mt-1">{event.event}</p>
+                    <span className="hud-label text-neon-cyan">{event.year}</span>
+                    <p className="text-foreground font-medium mt-1.5">{event.event}</p>
                   </div>
                 </motion.div>
               ))}

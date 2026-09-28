@@ -30,20 +30,24 @@ export default function BlogPage() {
           {blogPosts.map((post) => (
             <article
               key={post.slug}
-              className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-royal-blue/30 transition-all duration-300"
+              className="group relative p-6 clip-corners-sm bg-card/70 border border-neon-violet/20 hover:border-neon-pink/50 hover:shadow-[0_0_28px_-6px_rgba(255,45,120,0.5)] transition-all duration-300"
             >
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-neon-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              />
               <Link href={`/blog/${post.slug}`}>
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-royal-blue/10 text-royal-blue"
+                      className="px-2 py-0.5 font-mono text-[10px] text-neon-pink bg-neon-pink/10 border border-neon-pink/25"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h2 className="text-xl font-heading font-semibold text-foreground group-hover:text-royal-blue transition-colors mb-2">
+                <h2 className="text-xl font-heading font-bold uppercase tracking-wide text-foreground group-hover:text-neon-pink transition-colors mb-2">
                   {post.title}
                 </h2>
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
@@ -60,7 +64,7 @@ export default function BlogPage() {
                       {post.readTime}
                     </span>
                   </div>
-                  <span className="text-sm text-royal-blue flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-sm text-neon-pink flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     Read more <ArrowRight className="w-3 h-3" />
                   </span>
                 </div>

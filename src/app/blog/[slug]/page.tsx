@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-royal-blue/10 text-royal-blue"
+                className="px-2 py-0.5 font-mono text-[10px] text-neon-pink bg-neon-pink/10 border border-neon-pink/25"
               >
                 {tag}
               </span>
@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: Props) {
         </header>
 
         <div className="border-t border-border/50 pt-8">
-          <div className="prose prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-code:text-royal-blue prose-pre:bg-card prose-pre:border prose-pre:border-border/50 prose-a:text-royal-blue max-w-none">
+          <div className="prose prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-code:text-neon-pink prose-pre:bg-card prose-pre:border prose-pre:border-border/50 prose-a:text-neon-pink max-w-none">
             {post.content.split("\n").map((line, i) => {
               if (line.startsWith("## ")) {
                 return (

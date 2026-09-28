@@ -15,13 +15,13 @@ export default function Loading() {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-deep-space"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-void grid-flat"
           exit={{ opacity: 0, y: "-100%" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="text-center">
             <motion.h1
-              className="text-4xl font-heading font-bold text-gradient mb-4"
+              className="text-4xl font-heading font-bold uppercase tracking-widest text-gradient mb-4"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -37,7 +37,7 @@ export default function Loading() {
               {[0, 1, 2].map((i) => (
                 <motion.div
                   key={i}
-                  className="w-2 h-2 rounded-full bg-royal-blue"
+                  className="w-2 h-2 rounded-full bg-neon-pink"
                   animate={{ y: [0, -8, 0] }}
                   transition={{
                     duration: 0.6,

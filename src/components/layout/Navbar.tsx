@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/data";
-import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,7 +53,7 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
+            ? "bg-void/85 backdrop-blur-xl border-b border-neon-violet/20 shadow-[0_1px_0_0_rgba(255,45,120,0.25),0_8px_30px_-12px_rgba(0,245,255,0.35)]"
             : "bg-transparent"
         )}
         initial={{ y: -100 }}
@@ -65,10 +64,13 @@ export function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             <motion.button
               onClick={() => scrollTo("#home")}
-              className="text-xl font-heading font-bold text-gradient cursor-pointer"
+              className="flex items-center gap-2 font-heading font-bold uppercase tracking-widest text-gradient cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              <span aria-hidden="true" className="text-neon-pink font-mono text-sm">
+                {"//"}
+              </span>
               Angel Codes
             </motion.button>
 
@@ -78,34 +80,32 @@ export function Navbar() {
                   key={href}
                   onClick={() => scrollTo(href)}
                   className={cn(
-                    "relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200",
+                    "relative px-3 py-2 font-mono text-xs uppercase tracking-widest transition-colors duration-200",
                     activeSection === href.replace("#", "")
-                      ? "text-royal-blue"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-neon-pink [text-shadow:0_0_10px_rgba(255,45,120,0.8)]"
+                      : "text-neon-muted hover:text-neon-cyan"
                   )}
                 >
                   {label}
                   {activeSection === href.replace("#", "") && (
                     <motion.div
-                      className="absolute bottom-0 left-3 right-3 h-0.5 bg-royal-blue rounded-full"
+                      className="absolute -bottom-px left-2 right-2 h-[2px] bg-gradient-to-r from-neon-pink to-neon-cyan shadow-[0_0_10px_rgba(255,45,120,0.9)]"
                       layoutId="navIndicator"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
                 </button>
               ))}
-              <div className="ml-2">
-                <ThemeToggle />
-              </div>
             </div>
 
             <div className="flex items-center gap-2 md:hidden">
-              <ThemeToggle />
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="text-foreground"
+                className="text-neon-muted hover:text-neon-pink"
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
               >
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </Button>
@@ -117,7 +117,7 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg pt-20 md:hidden"
+            className="fixed inset-0 z-40 bg-void/97 backdrop-blur-lg pt-20 md:hidden grid-flat"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -127,7 +127,7 @@ export function Navbar() {
                 <motion.button
                   key={href}
                   onClick={() => scrollTo(href)}
-                  className="text-lg font-medium py-3 text-foreground/80 hover:text-royal-blue transition-colors"
+                  className="w-full clip-corners-sm border border-neon-violet/20 bg-void-2/60 px-5 py-3 font-heading text-base font-semibold uppercase tracking-widest text-neon-muted transition-colors hover:border-neon-pink/60 hover:text-neon-pink"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}

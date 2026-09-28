@@ -43,11 +43,20 @@ export function Projects() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <TiltCard className="relative group" tiltDegree={5}>
-                <div className="aspect-video rounded-2xl bg-gradient-to-br from-royal-blue/20 via-indigo/20 to-cyan/20 border border-border/50 flex items-center justify-center overflow-hidden">
+                <div className="aspect-video clip-corners bg-gradient-to-br from-neon-pink/20 via-neon-violet/20 to-neon-cyan/20 border border-neon-violet/30 grid-flat flex items-center justify-center overflow-hidden">
                   <div className="text-center" style={{ transform: "translateZ(30px)" }}>
                     <span className="text-5xl mb-2 block">🆔</span>
-                    <span className="text-lg font-heading font-bold text-gradient">{featured.title}</span>
+                    <span className="text-lg font-heading font-bold uppercase tracking-wide text-gradient">{featured.title}</span>
                   </div>
+                  {/* Corner brackets */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 opacity-70"
+                    style={{
+                      background:
+                        "linear-gradient(to right, #ff2d78 2px, transparent 2px) 0 0 / 28px 2px no-repeat, linear-gradient(to bottom, #ff2d78 2px, transparent 2px) 0 0 / 2px 28px no-repeat, linear-gradient(to left, #00f5ff 2px, transparent 2px) 100% 100% / 28px 2px no-repeat, linear-gradient(to top, #00f5ff 2px, transparent 2px) 100% 100% / 2px 28px no-repeat",
+                    }}
+                  />
                 </div>
               </TiltCard>
 
@@ -57,11 +66,13 @@ export function Projects() {
                   animate={isInView ? { opacity: 1 } : {}}
                   transition={{ delay: 0.2 }}
                 >
-                  <Badge variant="secondary" className="mb-3">Featured Project</Badge>
-                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+                  <Badge variant="outline" className="mb-3 h-6 gap-1.5 px-2.5 hud-label text-neon-pink border-neon-pink/40 bg-neon-pink/10">
+                    Featured Project
+                  </Badge>
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold uppercase tracking-wide text-foreground">
                     {featured.title}
                   </h3>
-                  <p className="text-muted-foreground mt-1">{featured.tagline}</p>
+                  <p className="text-neon-muted font-mono text-sm mt-1">{featured.tagline}</p>
                 </motion.div>
 
                 <motion.p
@@ -78,7 +89,7 @@ export function Projects() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.4 }}
                 >
-                  <h4 className="text-sm font-heading font-semibold text-foreground mb-2">Problem</h4>
+                  <h4 className="hud-label text-neon-cyan mb-2">Problem</h4>
                   <p className="text-sm text-muted-foreground">{featured.problem}</p>
                 </motion.div>
 
@@ -87,7 +98,7 @@ export function Projects() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.5 }}
                 >
-                  <h4 className="text-sm font-heading font-semibold text-foreground mb-2">Solution</h4>
+                  <h4 className="hud-label text-neon-cyan mb-2">Solution</h4>
                   <p className="text-sm text-muted-foreground">{featured.solution}</p>
                 </motion.div>
 
@@ -96,17 +107,17 @@ export function Projects() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.6 }}
                 >
-                  <h4 className="text-sm font-heading font-semibold text-foreground mb-2">Key Features</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                  <h4 className="hud-label text-neon-cyan mb-3">Key Features</h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {featured.features.map((feat, fi) => (
                       <motion.li
                         key={feat}
-                        className="text-sm text-muted-foreground flex items-center gap-2"
+                        className="text-sm text-muted-foreground flex items-start gap-2"
                         initial={{ opacity: 0, x: -10 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.6 + fi * 0.05 }}
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-royal-blue flex-shrink-0" />
+                        <span aria-hidden="true" className="w-1.5 h-1.5 mt-1.5 rotate-45 bg-neon-lime flex-shrink-0" />
                         {feat}
                       </motion.li>
                     ))}
@@ -126,13 +137,14 @@ export function Projects() {
 
                 {featured.lessonsLearned && (
                   <motion.div
-                    className="p-4 rounded-xl bg-muted/30 border border-border/30"
+                    className="relative p-4 clip-corners-sm bg-void-3/40 border border-neon-violet/20"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.9 }}
                   >
-                    <p className="text-sm text-muted-foreground italic">
-                      &ldquo;{featured.lessonsLearned}&rdquo;
+                    <p className="text-sm font-mono text-neon-muted">
+                      <span aria-hidden="true" className="text-neon-cyan">&gt;&gt;&nbsp;</span>
+                      {featured.lessonsLearned}
                     </p>
                   </motion.div>
                 )}
@@ -145,7 +157,7 @@ export function Projects() {
                 >
                   <a href={featured.github} target="_blank" rel="noopener noreferrer">
                     <motion.button
-                      className="bg-royal-blue hover:bg-royal-blue/90 text-white rounded-full px-5 py-2 text-sm inline-flex items-center gap-2 cursor-pointer"
+                      className="bg-neon-pink hover:brightness-110 text-void clip-corners-sm px-5 py-2.5 font-heading font-semibold uppercase tracking-wider text-sm inline-flex items-center gap-2 cursor-pointer glow"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                     >
@@ -156,7 +168,7 @@ export function Projects() {
                   {featured.live !== "#" && (
                     <motion.button
                       onClick={() => openDemo(featured.live, featured.title)}
-                      className="rounded-full px-5 py-2 text-sm inline-flex items-center gap-2 border border-border/50 text-foreground hover:border-royal-blue/50 hover:text-royal-blue transition-colors cursor-pointer"
+                      className="clip-corners-sm px-5 py-2.5 font-heading font-semibold uppercase tracking-wider text-sm inline-flex items-center gap-2 border border-neon-cyan/50 bg-neon-cyan/5 text-neon-cyan hover:bg-neon-cyan hover:text-void transition-colors cursor-pointer"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                     >
@@ -170,7 +182,7 @@ export function Projects() {
 
             <div>
               <motion.h3
-                className="text-xl font-heading font-bold text-foreground mb-6 text-center"
+                className="text-sm font-heading font-bold uppercase tracking-[0.25em] text-neon-cyan mb-8 text-center"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.3 }}
@@ -181,14 +193,17 @@ export function Projects() {
                 {rest.map((project, i) => (
                   <TiltCard key={project.title} tiltDegree={4}>
                     <motion.div
-                      className="group p-6 rounded-2xl bg-card/50 border border-border/50 h-full"
+                      className="group relative p-6 clip-corners-sm bg-card/70 border border-neon-violet/20 backdrop-blur-sm h-full hover:border-neon-pink/50 hover:shadow-[0_0_28px_-6px_rgba(255,45,120,0.5)] transition-all duration-300"
                       initial={{ opacity: 0, y: 20 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
-                      whileHover={{ borderColor: "rgba(37, 99, 235, 0.3)" }}
                     >
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-neon-cyan/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                      />
                       <div className="flex items-start justify-between mb-3" style={{ transform: "translateZ(20px)" }}>
-                        <h4 className="text-lg font-heading font-semibold text-foreground group-hover:text-royal-blue transition-colors">
+                        <h4 className="text-base font-heading font-bold uppercase tracking-wide text-foreground group-hover:text-neon-pink transition-colors">
                           {project.title}
                         </h4>
                       </div>
@@ -207,13 +222,13 @@ export function Projects() {
                         )}
                       </div>
                       <div className="flex gap-3" style={{ transform: "translateZ(20px)" }}>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-royal-blue transition-colors">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-neon-pink transition-colors">
                           <SiGithub className="w-4 h-4" />
                         </a>
                         {project.live !== "#" && (
                           <button
                             onClick={() => openDemo(project.live, project.title)}
-                            className="text-muted-foreground hover:text-royal-blue transition-colors cursor-pointer"
+                            className="text-muted-foreground hover:text-neon-pink transition-colors cursor-pointer"
                             aria-label="Live demo"
                           >
                             <Monitor className="w-4 h-4" />

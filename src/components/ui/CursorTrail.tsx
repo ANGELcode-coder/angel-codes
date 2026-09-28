@@ -20,7 +20,7 @@ interface Particle {
 }
 
 export function CursorTrail({
-  color = "#2563eb",
+  color = "#ff2d78",
   dotCount = 14,
   dotSize = 5,
   maxOpacity = 0.65,
@@ -35,6 +35,14 @@ export function CursorTrail({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // Skip the trail where it adds nothing or costs too much: coarse pointers
+    // (touch) have no cursor, and reduced-motion users don't want a follower.
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
+    if (prefersReducedMotion || !hasFinePointer) return;
 
     const particles: Particle[] = [];
     for (let i = 0; i < dotCount; i++) {
