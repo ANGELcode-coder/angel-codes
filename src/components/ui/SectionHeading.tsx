@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/ui/Reveal";
 
 interface SectionHeadingProps {
   title: string;
@@ -67,14 +68,9 @@ export function SectionHeading({ title, subtitle, className }: SectionHeadingPro
       </motion.h2>
 
       {subtitle && (
-        <motion.p
-          className="text-neon-muted text-lg max-w-2xl mx-auto leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {subtitle}
-        </motion.p>
+        <Reveal delay={0.15} distance={16} className="max-w-2xl mx-auto">
+          <p className="text-neon-muted text-lg leading-relaxed">{subtitle}</p>
+        </Reveal>
       )}
 
       {/* Centre-out neon rule */}

@@ -16,6 +16,7 @@ import {
   type ProjectStatus,
 } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 
 const STATUS_META: Record<
@@ -410,7 +411,7 @@ export function Projects() {
             {/* Archive — early work, listed plainly */}
             {archivedProjects.length > 0 && (
               <div>
-                <div className="text-center mb-8">
+                <Reveal className="text-center mb-8">
                   <h3 className="text-sm font-heading font-bold uppercase tracking-[0.25em] text-neon-violet mb-2">
                     Archive
                   </h3>
@@ -418,7 +419,7 @@ export function Projects() {
                     Earlier coursework and learning artefacts. Listed for
                     completeness rather than presented as finished work.
                   </p>
-                </div>
+                </Reveal>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {archivedProjects.map((item, i) => (
                     <motion.a

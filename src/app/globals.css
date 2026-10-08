@@ -476,6 +476,21 @@
    Scrollbar
    ============================================================ */
 
+/* Lenis smooth scroll. Only applied when ScrollMotion decides motion is
+   appropriate — otherwise the browser's native scrolling applies. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--void-2, #0a0818); }
 

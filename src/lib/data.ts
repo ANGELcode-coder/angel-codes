@@ -191,10 +191,55 @@ export const timelineEvents = [
   { year: "Future", event: "Building secure fintech products for Africa" },
 ];
 
+/** Content for the pinned horizontal scroller. */
+export const capabilities = [
+  {
+    label: "REST APIs",
+    detail: "Designed around real consumers — validation, versioning, documented contracts.",
+  },
+  {
+    label: "PostgreSQL",
+    detail: "Relational modelling that holds up under real data volume and change.",
+  },
+  {
+    label: "Authentication",
+    detail: "JWT, OAuth 2.0 and role-based access control built in, not bolted on.",
+  },
+  {
+    label: "React & TypeScript",
+    detail: "Interfaces that turn complex functionality into clear user journeys.",
+  },
+  {
+    label: "Testing",
+    detail: "Unit, integration, API and end-to-end coverage as part of the build.",
+  },
+  {
+    label: "Digital Identity",
+    detail: "Verifiable credentials, revocation and privacy-preserving verification.",
+  },
+  {
+    label: "Fintech Systems",
+    detail: "Ledgers, mobile money, KYC/AML flows and auditable transaction records.",
+  },
+  {
+    label: "Deployment",
+    detail: "Taking applications from local build to a working production environment.",
+  },
+  {
+    label: "Technical Writing",
+    detail: "SRS, API references and system docs another developer can act on.",
+  },
+  {
+    label: "Open Source",
+    detail: "Building in public, reviewing, and helping first-time contributors.",
+  },
+];
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Capabilities", href: "#capabilities" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Services", href: "#services" },

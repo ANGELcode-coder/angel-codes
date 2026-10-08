@@ -9,6 +9,7 @@ import { SiGithub, SiDevdotto } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { GlitchText } from "@/components/ui/GlitchText";
 import { GlowFollower } from "@/components/ui/GlowFollower";
+import { Magnetic } from "@/components/ui/Magnetic";
 
 const roles = [
   "Software Engineer",
@@ -156,35 +157,37 @@ export function Hero() {
               className="flex flex-wrap items-center justify-center gap-4 mb-12"
               variants={itemVariants}
             >
-              <motion.button
-                className="relative bg-neon-pink text-void font-heading font-semibold uppercase tracking-wider text-sm clip-corners-sm px-7 h-12 gap-2 inline-flex items-center group cursor-pointer glow hover:brightness-110 transition-[filter]"
-                onClick={() => scrollTo("projects")}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                View Projects
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </motion.button>
+              <Magnetic>
+                <button
+                  type="button"
+                  className="relative bg-neon-pink text-void font-heading font-semibold uppercase tracking-wider text-sm clip-corners-sm px-7 h-12 gap-2 inline-flex items-center group cursor-pointer glow hover:brightness-110 transition-[filter]"
+                  onClick={() => scrollTo("projects")}
+                >
+                  View Projects
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </Magnetic>
 
-              <motion.button
-                className="clip-corners-sm px-7 h-12 gap-2 inline-flex items-center border border-neon-cyan/50 bg-neon-cyan/5 font-heading font-semibold uppercase tracking-wider text-sm text-neon-cyan hover:bg-neon-cyan hover:text-void hover:glow-cyan transition-colors cursor-pointer"
-                onClick={() => scrollTo("resume")}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Download className="w-4 h-4" />
-                Resume
-              </motion.button>
+              <Magnetic>
+                <button
+                  type="button"
+                  className="clip-corners-sm px-7 h-12 gap-2 inline-flex items-center border border-neon-cyan/50 bg-neon-cyan/5 font-heading font-semibold uppercase tracking-wider text-sm text-neon-cyan hover:bg-neon-cyan hover:text-void hover:glow-cyan transition-colors cursor-pointer"
+                  onClick={() => scrollTo("resume")}
+                >
+                  <Download className="w-4 h-4" />
+                  Resume
+                </button>
+              </Magnetic>
 
-              <motion.a
-                href={personalInfo.social.email}
-                className="clip-corners-sm px-7 h-12 gap-2 inline-flex items-center border border-neon-violet/50 bg-neon-violet/5 font-heading font-semibold uppercase tracking-wider text-sm text-neon-violet hover:bg-neon-violet hover:text-void transition-colors cursor-pointer"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Mail className="w-4 h-4" />
-                Contact
-              </motion.a>
+              <Magnetic>
+                <a
+                  href={personalInfo.social.email}
+                  className="clip-corners-sm px-7 h-12 gap-2 inline-flex items-center border border-neon-violet/50 bg-neon-violet/5 font-heading font-semibold uppercase tracking-wider text-sm text-neon-violet hover:bg-neon-violet hover:text-void transition-colors cursor-pointer"
+                >
+                  <Mail className="w-4 h-4" />
+                  Contact
+                </a>
+              </Magnetic>
             </motion.div>
 
             {/* Social row */}

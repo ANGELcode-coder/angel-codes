@@ -9,6 +9,7 @@ import { Statistics } from "@/components/sections/Statistics";
 import { FeaturedTech } from "@/components/sections/FeaturedTech";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
+import { PinnedTicker } from "@/components/sections/PinnedTicker";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { Services } from "@/components/sections/Services";
@@ -18,6 +19,7 @@ import { Accomplishments } from "@/components/sections/Accomplishments";
 import { Blog } from "@/components/sections/Blog";
 import { Resume } from "@/components/sections/Resume";
 import { Contact } from "@/components/sections/Contact";
+import { capabilities } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -30,6 +32,11 @@ export default function Home() {
         <FeaturedTech />
         <About />
         <Skills />
+        <PinnedTicker
+          items={capabilities}
+          heading="Capabilities"
+          subtitle="What I actually build with, end to end"
+        />
         <Experience />
         <Projects />
         <Services />

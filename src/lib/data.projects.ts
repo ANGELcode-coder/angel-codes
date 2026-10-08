@@ -163,28 +163,6 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    slug: "yibs-crown-vote",
-    title: "Crown Vote",
-    tagline: "Student council voting platform",
-    description:
-      "A TypeScript/React voting platform for the YIBS student council. Built as a working application, and worth showing as evidence of React and TypeScript delivery rather than as a flagship engineering artefact.",
-    status: "shipped",
-    outcome: "React + TypeScript application; the repository is public and readable.",
-    problem:
-      "Student council elections needed a consistent, auditable way to run and record votes.",
-    solution:
-      "A dedicated voting interface backed by a structured data layer.",
-    features: [
-      "Voter and candidate management",
-      "Vote submission and tallying",
-      "Results presentation",
-    ],
-    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
-    repo: "https://github.com/ANGELcode-coder/yibs-crown-vote",
-    screenshots: ["/projects/vote-1.png"],
-    year: "2026",
-  },
-  {
     slug: "nextjs-dashboard",
     title: "Next.js Dashboard",
     tagline: "Full-stack dashboard built while learning the App Router",
@@ -424,12 +402,6 @@ export const openSourceRepos = [
     name: "angel-codes",
     description: "This portfolio site.",
     url: "https://github.com/ANGELcode-coder/angel-codes",
-    language: "TypeScript",
-  },
-  {
-    name: "yibs-crown-vote",
-    description: "Student council voting platform.",
-    url: "https://github.com/ANGELcode-coder/yibs-crown-vote",
     language: "TypeScript",
   },
   {

@@ -1,20 +1,47 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Download, FileText } from "lucide-react";
+import { Download, FileText, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { generateResume } from "@/lib/generateResume";
 
 export function Resume() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [busy, setBusy] = useState<"download" | "view" | null>(null);
 
-  const handleDownload = () => {
-    const doc = generateResume();
-    doc.save("Angel_Zee_Ngoh_Resume.pdf");
+  /**
+   * jsPDF is ~335KB minified and is only ever needed on click, so it is
+   * imported on demand rather than shipped in the initial bundle.
+   */
+  const withPdf = async (
+    action: (doc: import("jspdf").jsPDF) => void
+  ): Promise<void> => {
+    const { generateResume } = await import("@/lib/generateResume");
+    action(generateResume());
+  };
+
+  const handleDownload = async () => {
+    setBusy("download");
+    try {
+      await withPdf(doc => doc.save("Angel_Zee_Ngoh_Resume.pdf"));
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const handleView = async () => {
+    setBusy("view");
+    try {
+      await withPdf(doc => {
+        const blob = doc.output("bloburl");
+        window.open(blob, "_blank");
+      });
+    } finally {
+      setBusy(null);
+    }
   };
 
   return (
@@ -106,21 +133,27 @@ export function Resume() {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button
                   onClick={handleDownload}
+                  disabled={busy !== null}
                   className="flex-1 gap-2 h-11"
                 >
-                  <Download className="w-4 h-4" />
+                  {busy === "download" ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Download className="w-4 h-4" />
+                  )}
                   Download Resume (PDF)
                 </Button>
                 <Button
                   variant="neon"
+                  disabled={busy !== null}
                   className="flex-1 gap-2 h-11"
-                  onClick={() => {
-                    const doc = generateResume();
-                    const blob = doc.output("bloburl");
-                    window.open(blob, "_blank");
-                  }}
+                  onClick={handleView}
                 >
-                  <FileText className="w-4 h-4" />
+                  {busy === "view" ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <FileText className="w-4 h-4" />
+                  )}
                   View Online
                 </Button>
               </div>

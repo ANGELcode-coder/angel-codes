@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
 import { Providers } from "./providers";
 import { CursorTrailWrapper } from "@/components/layout/CursorTrailWrapper";
+import { ScrollMotion } from "@/components/layout/ScrollMotion";
 import { ScanlineOverlay } from "@/components/ui/ScanlineOverlay";
 import {
   SITE_URL,
@@ -118,9 +119,11 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col antialiased">
         <Providers>
-          <CursorTrailWrapper />
-          {children}
-          <ScanlineOverlay />
+          <ScrollMotion>
+            <CursorTrailWrapper />
+            {children}
+            <ScanlineOverlay />
+          </ScrollMotion>
         </Providers>
       </body>
     </html>

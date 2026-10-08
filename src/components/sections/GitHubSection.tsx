@@ -17,6 +17,15 @@ interface Repo {
   url: string;
 }
 
+/**
+ * Repositories intentionally left off this section.
+ *
+ * The API response is not curated — it returns whatever is public and recently
+ * touched — so anything hidden from the portfolio has to be filtered out here or
+ * it reappears regardless of the project data.
+ */
+const EXCLUDED_REPOS = new Set(["ANGELcode-coder", "yibs-crown-vote"]);
+
 export function GitHubSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -24,12 +33,23 @@ export function GitHubSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://api.github.com/users/ANGELcode-coder/repos?sort=updated&per_page=8")
+    const controller = new AbortController();
+
+    fetch(
+      "https://api.github.com/users/ANGELcode-coder/repos?sort=updated&per_page=100",
+      { signal: controller.signal }
+    )
       .then((r) => r.json())
       .then((data) => {
-        if (Array.isArray(data)) {
-          setRepos(
-            data.map((repo: Record<string, unknown>) => ({
+        if (!Array.isArray(data)) return;
+
+        setRepos(
+          data
+            .filter(
+              (repo: Record<string, unknown>) =>
+                !repo.fork && !EXCLUDED_REPOS.has(String(repo.name || ""))
+            )
+            .map((repo: Record<string, unknown>) => ({
               name: String(repo.name || ""),
               description: String(repo.description || "No description"),
               stars: Number(repo.stargazers_count || 0),
@@ -37,11 +57,12 @@ export function GitHubSection() {
               lang: String(repo.language || "N/A"),
               url: String(repo.html_url || ""),
             }))
-          );
-        }
+        );
       })
       .catch(() => {})
       .finally(() => setLoading(false));
+
+    return () => controller.abort();
   }, []);
 
   return (
@@ -49,7 +70,7 @@ export function GitHubSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="GitHub"
-          subtitle="Open source contributions and projects"
+          subtitle="Public repositories you can read, run or contribute to"
         />
 
         <div ref={ref} className="space-y-8">
@@ -63,7 +84,7 @@ export function GitHubSection() {
             </p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {repos.slice(0, 8).map((repo, i) => (
+              {repos.slice(0, 12).map((repo, i) => (
                 <motion.a
                   key={repo.name}
                   href={repo.url}
