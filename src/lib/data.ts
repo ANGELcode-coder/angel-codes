@@ -13,8 +13,8 @@ export const personalInfo = {
   ],
   social: {
     github: "https://github.com/ANGELcode-coder",
-    linkedin: "https://linkedin.com/in/angel-zee-ngoh",
-    devto: "https://dev.to/angelngoh",
+    linkedin: "https://www.linkedin.com/in/angel-zee-ngoh",
+    devto: "https://dev.to/angel_zeengoh_0fc1818af4",
     email: "mailto:ngohangelzee@gmail.com",
   },
 };
@@ -173,287 +173,14 @@ export const upcomingCertifications = [
   { title: "Spring Professional Certification", category: "software", issuer: "VMware" },
 ];
 
-export const projects = [
-  {
-    title: "RefugeeID — Self-Sovereign Identity Wallet",
-    tagline: "Decentralized digital identity for displaced persons",
-    description:
-      "An offline-first, decentralized identity wallet that gives refugees and displaced persons a portable, verifiable digital identity they fully own. Built on W3C Verifiable Credentials and did:key/did:web DID methods.",
-    problem:
-      "Refugees and displaced persons often lack official identification documents, making it difficult to access aid, healthcare, education, and financial services.",
-    solution:
-      "Built a self-sovereign identity system where NGO field agents can issue W3C-compliant verifiable credentials directly to refugees' mobile wallets. All cryptographic operations run on-device with no internet required at point of use.",
-    features: [
-      "Mobile wallet with QR-based credential sharing and verification",
-      "Issuer portal for NGO field agents with 3-step credential issuance wizard",
-      "Selective disclosure — prove age without revealing full identity",
-      "Social recovery via Shamir's Secret Sharing (3-of-5 guardians)",
-      "8 language support including RTL (Arabic, Persian, Pashto)",
-      "Ed25519Signature2020 cryptographic signing",
-    ],
-    technologies: ["React", "TanStack Start", "TypeScript", "Tailwind", "W3C VC", "DID", "Ed25519"],
-    github: "https://github.com/ANGELcode-coder/ANGELcode-coder",
-    live: "#",
-    lessonsLearned:
-      "Deepened my understanding of decentralized identity standards, W3C Verifiable Credentials, and offline-first architecture for humanitarian applications.",
-    screenshots: ["/projects/did-wallet-1.jpg", "/projects/did-wallet-2.jpg"],
-  },
-  {
-    title: "NFC Bank Loan Management System",
-    tagline: "Loan processing and tracking system for banking operations",
-    description:
-      "A loan management system built during my internship at NFC Bank for processing, tracking, and managing loan applications from submission through approval and repayment.",
-    problem:
-      "The bank needed a digital system to streamline loan application processing, track approvals, manage repayment schedules, and generate reports for stakeholders.",
-    solution:
-      "Developed a comprehensive loan management module with application intake, credit assessment workflows, approval routing, repayment tracking, and reporting dashboards.",
-    features: [
-      "Loan application submission and document management",
-      "Credit assessment workflow with automated scoring",
-      "Approval routing with role-based access",
-      "Repayment schedule generation and tracking",
-      "Delinquency monitoring and alerts",
-      "Management reporting and analytics",
-    ],
-    technologies: ["Java", "Spring Boot", "MySQL", "Git", "REST APIs"],
-    github: "#",
-    live: "#",
-    lessonsLearned:
-      "Learned about banking domain workflows, credit assessment processes, and building enterprise applications with strict security and compliance requirements.",
-    screenshots: ["/projects/nfc-loan-1.jpg"],
-  },
-  {
-    title: "Pharmacy",
-    tagline: "Comprehensive pharmacy mobile application",
-    description:
-      "A full-featured React Native mobile application for finding pharmacies, searching medications, booking hospital consultations, and accessing AI-powered emergency health guidance.",
-    problem:
-      "Patients struggled to find nearby pharmacies with specific medications, book medical consultations, and access reliable emergency health information.",
-    solution:
-      "Built a cross-platform mobile app with pharmacy finder, drug search with proximity sorting, consultation booking, and AI-powered emergency health guidance.",
-    features: [
-      "Pharmacy finder with proximity-based sorting",
-      "Drug search and pre-ordering system",
-      "Hospital consultation booking",
-      "AI-powered emergency health guidance",
-      "Medication tracking and reminders",
-      "Multi-role system (Patient, Pharmacy Manager, Admin)",
-    ],
-    technologies: ["React Native", "Expo", "TypeScript", "MySQL", "tRPC", "JWT"],
-    github: "https://github.com/ANGELcode-coder/Pharmacy",
-    live: "#",
-    lessonsLearned:
-      "Gained extensive experience with React Native, Expo SDK, and building multi-role mobile applications with complex database schemas.",
-    screenshots: ["/projects/pharmacy-1.jpg"],
-  },
-  {
-    title: "house_rental",
-    tagline: "Rental management system",
-    description:
-      "A web-based rental management system for landlords and tenants to manage property listings, rental agreements, payments, and maintenance requests.",
-    problem:
-      "Property owners and tenants lacked a centralized platform for managing rental agreements, payments, and maintenance communication.",
-    solution:
-      "Built a full-stack rental management system with property listings, tenant management, payment tracking, and maintenance request workflows.",
-    features: [
-      "Property listing management with images",
-      "Tenant onboarding and agreement management",
-      "Rent payment tracking and receipts",
-      "Maintenance request submission and tracking",
-      "Landlord and tenant dashboards",
-    ],
-    technologies: ["PHP", "HTML", "CSS", "JavaScript", "MySQL"],
-    github: "https://github.com/ANGELcode-coder/house_rental",
-    live: "https://house-rental-sage.vercel.app",
-    lessonsLearned:
-      "Strengthened my PHP backend development skills and learned about building complete rental management workflows.",
-    screenshots: ["/projects/rental-1.png"],
-  },
-  {
-    title: "yibs-crown-vote",
-    tagline: "Voting application for YIBS Crown",
-    description:
-      "A modern voting application built with React, TypeScript, and Tailwind CSS for managing and participating in institutional elections.",
-    problem:
-      "The institution needed a digital platform to conduct fair and transparent elections for the YIBS Crown event.",
-    solution:
-      "Developed a web-based voting system with secure authentication, real-time results, and an intuitive voting interface.",
-    features: [
-      "Secure voter authentication",
-      "Real-time vote tallying",
-      "Candidate profiles and information",
-      "Admin dashboard for election management",
-      "Responsive design for mobile and desktop",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind", "Vite", "Supabase"],
-    github: "https://github.com/ANGELcode-coder/yibs-crown-vote",
-    live: "#",
-    lessonsLearned:
-      "Learned about building secure voting systems and real-time data synchronization.",
-    screenshots: ["/projects/vote-1.png"],
-  },
-  {
-    title: "IncubatorManagement",
-    tagline: "Startup incubator management platform",
-    description:
-      "A Django-based web application for managing startup incubators, tracking incubatee progress, and facilitating mentorship programs.",
-    problem:
-      "Startup incubators needed a centralized system to manage applications, track progress, and coordinate mentorship for multiple incubatees.",
-    solution:
-      "Built a comprehensive incubator management system with application workflows, progress tracking dashboards, and mentorship scheduling.",
-    features: [
-      "Startup application and approval workflow",
-      "Progress tracking with milestones",
-      "Mentor assignment and session scheduling",
-      "Resource and event management",
-      "Reporting and analytics dashboard",
-    ],
-    technologies: ["Python", "Django", "SQLite", "Celery", "HTML/CSS"],
-    github: "https://github.com/ANGELcode-coder/ANGELcode-coder",
-    live: "#",
-    lessonsLearned:
-      "Gained experience with Django framework, Celery task queues, and building management systems for organizational workflows.",
-    screenshots: ["/projects/incubator-1.png"],
-  },
-  {
-    title: "HelpDesk Pro",
-    tagline: "Enterprise ticketing system with role-based access",
-    description:
-      "A comprehensive help desk management system featuring ticket tracking, role-based access control, and real-time notifications for educational institutions.",
-    problem:
-      "Educational institutions lacked a centralized system for managing IT support requests across different user roles.",
-    solution:
-      "Built a role-based ticketing system with separate dashboards for admins, faculty, and students, featuring real-time status updates and prioritization.",
-    features: [
-      "Role-based dashboards (Admin, Faculty, Student)",
-      "Ticket creation, assignment, and tracking",
-      "Real-time status notifications",
-      "Priority management system",
-      "Analytics and reporting dashboard",
-    ],
-    technologies: ["React", "Spring Boot", "MySQL", "Docker", "REST APIs"],
-    github: "https://github.com/angelngoh/helpdesk-pro",
-    live: "#",
-    lessonsLearned:
-      "Gained deep experience with role-based access control patterns and RESTful API design for multi-tenant systems.",
-    screenshots: ["/projects/helpdesk-1.jpg", "/projects/helpdesk-2.jpg", "/projects/helpdesk-3.jpg"],
-  },
-  {
-    title: "nextjs-dashboard",
-    tagline: "Next.js learning dashboard",
-    description:
-      "A dashboard application built while learning the Next.js App Router course, featuring authentication, database integration, and dynamic routing.",
-    problem:
-      "Learning modern Next.js patterns including server components, API routes, and database integration with Vercel Postgres.",
-    solution:
-      "Built a complete dashboard with user authentication, invoice management, and revenue charts following Next.js best practices.",
-    features: [
-      "User authentication with credentials",
-      "Invoice creation and management",
-      "Revenue chart visualizations",
-      "Server-side rendering and data fetching",
-      "Responsive sidebar layout",
-    ],
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
-    github: "https://github.com/ANGELcode-coder/nextjs-dashboard",
-    live: "https://nextjs-dashboard-angel-zees-projects.vercel.app",
-    lessonsLearned:
-      "Mastered the Next.js App Router pattern, server components, and database integration patterns.",
-    screenshots: ["/projects/dashboard-1.png"],
-  },
-  {
-    title: "Afrilink Pay",
-    tagline: "Unified wallet & mobile money platform for African markets",
-    description:
-      "A modular fintech platform concept unifying wallet transfers, mobile-money top-up and withdrawal, identity verification and administration across Cameroon, Nigeria and Kenya.",
-    problem:
-      "Mobile money ecosystems in African markets are fragmented — each operator runs a closed loop, forcing users and businesses into multiple apps and balances.",
-    solution:
-      "Designed a modular wallet platform with a shared ledger, pluggable mobile-money adapters per country, tiered KYC/AML checks and a merchant settlement dashboard.",
-    features: [
-      "Unified wallet with transfer, top-up and withdrawal flows",
-      "Country-specific mobile money adapters (CMR, NGA, KEN)",
-      "Tiered KYC / AML checks and transaction limits",
-      "Merchant settlement and reconciliation dashboard",
-      "Role-based administration and audit logging",
-    ],
-    technologies: ["Node.js", "NestJS", "PostgreSQL", "REST APIs", "KYC/AML", "RBAC"],
-    github: "#",
-    live: "#",
-    lessonsLearned:
-      "Modelled ledger invariants, idempotent payment handling and compliance requirements the way a real fintech backend has to.",
-    screenshots: [],
-  },
-  {
-    title: "ILLUNEX",
-    tagline: "Solar energy & intelligent power management platform",
-    description:
-      "An integrated energy platform combining solar generation, battery storage, intelligent power management and professional maintenance services to deliver reliable, sustainable electricity.",
-    problem:
-      "Solar installations fail quietly: without monitoring, underperforming panels and failing batteries go unnoticed until output drops.",
-    solution:
-      "Built a platform that pairs live generation and storage telemetry with automated power-management rules and scheduled professional maintenance workflows.",
-    features: [
-      "Live solar generation and battery storage monitoring",
-      "Intelligent load and power management rules",
-      "Automated alerts for underperformance and faults",
-      "Professional maintenance scheduling and job tracking",
-      "Customer-facing usage and savings reporting",
-    ],
-    technologies: ["Next.js", "TypeScript", "REST APIs", "PostgreSQL", "Tailwind"],
-    github: "https://github.com/ANGELcode-coder/ILLUNEX",
-    live: "#",
-    lessonsLearned:
-      "Turned physical infrastructure telemetry into software: modelling device state, fault conditions and service lifecycles end to end.",
-    screenshots: [],
-  },
-  {
-    title: "rentalsol",
-    tagline: "Rental & booking platform for houses",
-    description:
-      "A web application for listing, searching and booking rental properties, with property management, availability calendars and tenant enquiries.",
-    problem:
-      "Finding and managing rental housing relies on scattered listings and manual back-and-forth, which is slow for tenants and landlords alike.",
-    solution:
-      "Built a searchable listings platform with detailed property pages, availability calendars, an enquiry/booking flow and a landlord dashboard for managing their inventory.",
-    features: [
-      "Property listings with search and filtering",
-      "Detailed property pages with photo galleries",
-      "Availability calendar and booking enquiries",
-      "Landlord dashboard for managing listings",
-      "Full CRUD backend with authentication",
-    ],
-    technologies: ["JavaScript", "Node.js", "Express", "MongoDB", "REST APIs"],
-    github: "https://github.com/ANGELcode-coder/rentalsol",
-    live: "#",
-    lessonsLearned:
-      "Practised full CRUD architecture, relational data modelling and image-heavy listing UX from search through to enquiry.",
-    screenshots: ["/projects/rental-1.png"],
-  },
-  {
-    title: "Task Manager",
-    tagline: "Full-stack task management application",
-    description:
-      "A full-stack task manager with frontend/backend separation, REST API integration, database connectivity, automated testing and cloud deployment.",
-    problem:
-      "Managing work needs authentication, per-user data isolation and a dependable API boundary between client and server.",
-    solution:
-      "Built a separated frontend and backend with JWT authentication, role-based access control, REST resources for tasks, and automated API tests before deployment.",
-    features: [
-      "JWT authentication with role-based access control",
-      "Task CRUD with filtering and status tracking",
-      "Clean separation between frontend and REST API",
-      "Automated API and system testing",
-      "Cloud deployment with environment configuration",
-    ],
-    technologies: ["React", "Node.js", "Express", "PostgreSQL", "JWT", "REST APIs"],
-    github: "https://github.com/ANGELcode-coder/task-manager-capstone",
-    live: "#",
-    lessonsLearned:
-      "Reinforced API contract design, auth middleware, input validation and deployment with environment configuration.",
-    screenshots: [],
-  },
-];
+
+export {
+  projects,
+  archivedProjects,
+  openSourceRepos,
+  type Project,
+  type ProjectStatus,
+} from "./data.projects";
 
 export const timelineEvents = [
   { year: "2023", event: "Started Computer Software Engineering at YIBS" },
@@ -470,7 +197,7 @@ export const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Certifications", href: "#certifications" },
+  { label: "Services", href: "#services" },
   { label: "GitHub", href: "#github" },
   { label: "Blog", href: "/blog" },
   { label: "Resume", href: "#resume" },

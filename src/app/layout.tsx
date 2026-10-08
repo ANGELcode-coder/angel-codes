@@ -3,6 +3,11 @@ import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
 import { Providers } from "./providers";
 import { CursorTrailWrapper } from "@/components/layout/CursorTrailWrapper";
 import { ScanlineOverlay } from "@/components/ui/ScanlineOverlay";
+import {
+  SITE_URL,
+  SITE_NAME,
+  AUTHOR_NAME,
+} from "@/lib/site";
 import "./globals.css";
 
 const chakraPetch = Chakra_Petch({
@@ -25,34 +30,42 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Angel Codes | Angel Zee Ngoh - Software Engineer & Full-Stack Developer",
+  metadataBase: new URL(SITE_URL),
+  title: `${SITE_NAME} | ${AUTHOR_NAME} - Software Engineer & Full-Stack Developer`,
   description:
-    "Building scalable software that solves real-world problems. Explore my portfolio of projects, certifications, and skills.",
+    "Software engineer building practical digital products — full-stack development, fintech and digital financial services, APIs, databases, and open-source tools.",
   keywords: [
     "Angel Zee Ngoh",
-    "Angel Ngoh",
+    "Angel Codes",
     "Software Engineer",
     "Full-Stack Developer",
     "React",
-    "Next.js",
-    "Java",
-    "Spring Boot",
-    "React Native",
+    "TypeScript",
+    "Node.js",
+    "PostgreSQL",
+    "Fintech",
+    "Digital Identity",
+    "Open Source",
+    "Yaounde Cameroon",
     "Portfolio",
   ],
-  authors: [{ name: "Angel Zee Ngoh" }],
+  authors: [{ name: AUTHOR_NAME }],
+  creator: AUTHOR_NAME,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Angel Codes | Angel Zee Ngoh",
-    description:
-      "Building scalable software that solves real-world problems.",
     type: "website",
     locale: "en_US",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | ${AUTHOR_NAME}`,
+    description:
+      "Software engineer building practical digital products — full-stack, fintech, APIs and open-source tools.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Angel Codes | Angel Zee Ngoh",
+    title: `${SITE_NAME} | ${AUTHOR_NAME}`,
     description:
-      "Building scalable software that solves real-world problems.",
+      "Software engineer building practical digital products — full-stack, fintech, APIs and open-source tools.",
   },
   robots: {
     index: true,
@@ -63,14 +76,19 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Angel Zee Ngoh",
-  url: "https://angelcodes.vercel.app",
+  name: AUTHOR_NAME,
+  url: SITE_URL,
   jobTitle: "Software Engineer & Full-Stack Developer",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Yaoundé",
+    addressCountry: "CM",
+  },
   email: "ngohangelzee@gmail.com",
   sameAs: [
     "https://github.com/ANGELcode-coder",
-    "https://linkedin.com/in/angelngoh",
-    "https://dev.to/angelngoh",
+    "https://www.linkedin.com/in/angel-zee-ngoh",
+    "https://dev.to/angel_zeengoh_0fc1818af4",
   ],
 };
 

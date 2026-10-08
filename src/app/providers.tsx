@@ -4,9 +4,11 @@ import { useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
+// Kept in sync with the section order rendered in `app/page.tsx`, so J/K
+// keyboard navigation moves through sections in the order they appear.
 const sectionIds = [
-  "home", "about", "skills", "experience", "projects",
-  "certifications", "github", "blog", "resume", "contact",
+  "home", "about", "skills", "experience", "projects", "services",
+  "certifications", "github", "accomplishments", "blog", "resume", "contact",
 ];
 
 export function Providers({ children }: { children: React.ReactNode }) {

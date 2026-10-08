@@ -23,7 +23,7 @@ export function Blog() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState<"all" | "dev.to" | "Google Developers" | "local">("all");
+  const [filter, setFilter] = useState<"all" | "dev.to" | "local">("all");
 
   useEffect(() => {
     fetch("/api/blog")
@@ -34,7 +34,7 @@ export function Blog() {
   }, []);
 
   const filtered = filter === "all" ? posts : posts.filter((p) => p.source === filter);
-  const sources = ["all", "dev.to", "Google Developers", "local"] as const;
+  const sources = ["all", "dev.to", "local"] as const;
 
   return (
     <SectionWrapper id="blog" className="bg-void-2/30">

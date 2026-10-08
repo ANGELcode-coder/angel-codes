@@ -1,54 +1,47 @@
 import { NextResponse } from "next/server";
+import { SITE_URL, SITE_NAME, AUTHOR_NAME } from "@/lib/site";
+import { blogPosts } from "@/lib/blog/posts";
 
-interface FeedPost {
-  title: string;
-  excerpt: string;
-  date: string;
-  url: string;
-  source: string;
-}
-
+/**
+ * Atom feed for the portfolio's own written articles.
+ *
+ * Previously this fetched its own `/api/blog` route over `http://localhost:3000`,
+ * which never resolves in production — so the feed was always empty. Importing
+ * the posts directly removes the network hop and the failure mode.
+ */
 export async function GET() {
-  let posts: FeedPost[] = [];
-  try {
-    const res = await fetch("http://localhost:3000/api/blog", {
-      next: { revalidate: 3600 },
-    });
-    if (res.ok) {
-      const data = await res.json();
-      posts = (data.posts || []).map((p: Record<string, unknown>) => ({
-        title: String(p.title || ""),
-        excerpt: String(p.excerpt || ""),
-        date: String(p.date || ""),
-        url: String(p.url || ""),
-        source: String(p.source || ""),
-      }));
-    }
-  } catch {}
+  const escapeXml = (value: string) =>
+    value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&apos;");
 
-  const siteUrl = "https://angelcodes.vercel.app";
-
-  const itemsXml = posts
+  const itemsXml = blogPosts
     .map(
-      (p) => `    <entry>
-      <title>${p.title.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</title>
-      <link href="${p.url.replace(/&/g, "&amp;")}"/>
-      <updated>${new Date(p.date).toISOString()}</updated>
-      <summary type="html">${p.excerpt.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</summary>
-      <category term="${p.source}" />
-    </entry>`
+      (post) => `  <entry>
+    <title>${escapeXml(post.title)}</title>
+    <link href="${SITE_URL}/blog/${post.slug}"/>
+    <id>${SITE_URL}/blog/${post.slug}</id>
+    <published>${new Date(post.date).toISOString()}</published>
+    <updated>${new Date(post.date).toISOString()}</updated>
+    <summary type="html">${escapeXml(post.excerpt)}</summary>
+    ${post.tags.map((tag) => `<category term="${escapeXml(tag)}"/>`).join("\n    ")}
+  </entry>`
     )
     .join("\n");
 
   const xml = `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Angel Codes Blog</title>
-  <link href="${siteUrl}/feed.xml" rel="self"/>
-  <link href="${siteUrl}"/>
+  <title>${escapeXml(SITE_NAME)} Blog</title>
+  <subtitle>Articles on software engineering, fintech and open source by ${escapeXml(AUTHOR_NAME)}</subtitle>
+  <link href="${SITE_URL}/feed.xml" rel="self"/>
+  <link href="${SITE_URL}"/>
   <updated>${new Date().toISOString()}</updated>
-  <id>${siteUrl}/</id>
+  <id>${SITE_URL}/</id>
   <author>
-    <name>Angel Zee Ngoh</name>
+    <name>${escapeXml(AUTHOR_NAME)}</name>
   </author>
 ${itemsXml}
 </feed>`;
@@ -56,6 +49,7 @@ ${itemsXml}
   return new NextResponse(xml, {
     headers: {
       "Content-Type": "application/atom+xml; charset=utf-8",
+      "Cache-Control": "public, max-age=3600, s-maxage=3600",
     },
   });
 }

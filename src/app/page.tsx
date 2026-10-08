@@ -11,8 +11,10 @@ import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
+import { Services } from "@/components/sections/Services";
 import { Certifications } from "@/components/sections/Certifications";
 import { GitHubSection } from "@/components/sections/GitHubSection";
+import { Accomplishments } from "@/components/sections/Accomplishments";
 import { Blog } from "@/components/sections/Blog";
 import { Resume } from "@/components/sections/Resume";
 import { Contact } from "@/components/sections/Contact";
@@ -30,8 +32,10 @@ export default function Home() {
         <Skills />
         <Experience />
         <Projects />
+        <Services />
         <Certifications />
         <GitHubSection />
+        <Accomplishments />
         <Blog />
         <Resume />
         <Contact />

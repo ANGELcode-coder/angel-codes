@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
+import { DEV_TO_USERNAME } from "@/lib/site";
+import { blogPosts } from "@/lib/blog/posts";
 
-interface BlogPost {
+export interface BlogPost {
   title: string;
   excerpt: string;
   date: string;
@@ -11,35 +13,17 @@ interface BlogPost {
   coverImage?: string;
 }
 
-const localPosts: BlogPost[] = [
-  {
-    title: "Building Scalable REST APIs with Spring Boot",
-    excerpt: "A comprehensive guide to building production-ready REST APIs using Spring Boot, JPA, and PostgreSQL with best practices for error handling, validation, and security.",
-    date: "Mar 15, 2026",
-    readTime: "8 min read",
-    url: "/blog/building-scalable-apis-with-spring-boot",
-    tags: ["Java", "Spring Boot", "REST"],
-    source: "local",
-  },
-  {
-    title: "Next.js App Router: A Deep Dive",
-    excerpt: "Explore the Next.js App Router pattern — server components, layouts, data fetching, and how to build modern full-stack applications with React Server Components.",
-    date: "Feb 20, 2026",
-    readTime: "6 min read",
-    url: "/blog/nextjs-app-router-deep-dive",
-    tags: ["Next.js", "React", "TypeScript"],
-    source: "local",
-  },
-  {
-    title: "Cross-Platform Mobile Development with React Native",
-    excerpt: "Learn how to build production-ready mobile apps for iOS and Android using React Native, Expo, and TypeScript with shared business logic and platform-specific UIs.",
-    date: "Jan 10, 2026",
-    readTime: "10 min read",
-    tags: ["React Native", "Expo", "Mobile"],
-    url: "/blog/react-native-cross-platform-development",
-    source: "local",
-  },
-];
+/** Written articles that live in this repo, mapped to the API shape. */
+const localPosts: BlogPost[] = blogPosts.map((post) => ({
+  title: post.title,
+  excerpt: post.excerpt,
+  date: post.date,
+  readTime: post.readTime,
+  url: `/blog/${post.slug}`,
+  tags: post.tags,
+  source: "local",
+  coverImage: post.coverImage,
+}));
 
 interface DevToArticle {
   title: string;
@@ -47,32 +31,28 @@ interface DevToArticle {
   published_at: string;
   reading_time_minutes: number;
   url: string;
-  tags: string[];
+  tag_list: string[];
   cover_image: string | null;
 }
 
-interface GoogleBlogEntry {
-  title?: { $t?: string };
-  content?: { $t?: string };
-  published?: { $t?: string };
-  updated?: { $t?: string };
-  category?: { term: string }[];
-  link?: { rel: string; href: string }[];
-}
-
-interface GoogleBlogFeed {
-  feed?: {
-    entry?: GoogleBlogEntry[];
-  };
-}
-
+/**
+ * Fetches published dev.to articles for the configured handle.
+ *
+ * The handle previously pointed at `angelngoh`, which does not exist — the real
+ * account is `angel_zeengoh_0fc1818af4`. Any failure resolves to an empty list
+ * so the section degrades to local posts instead of erroring.
+ */
 async function fetchDevTo(): Promise<BlogPost[]> {
   try {
-    const res = await fetch("https://dev.to/api/articles?username=angelngoh&per_page=10", {
-      next: { revalidate: 3600 },
-    });
+    const res = await fetch(
+      `https://dev.to/api/articles?username=${DEV_TO_USERNAME}&per_page=30`,
+      { next: { revalidate: 3600 } }
+    );
     if (!res.ok) return [];
-    const data: DevToArticle[] = await res.json();
+
+    const data = (await res.json()) as DevToArticle[];
+    if (!Array.isArray(data)) return [];
+
     return data.map((article) => ({
       title: article.title,
       excerpt: article.description || "",
@@ -83,7 +63,7 @@ async function fetchDevTo(): Promise<BlogPost[]> {
       }),
       readTime: `${article.reading_time_minutes} min read`,
       url: article.url,
-      tags: article.tags || [],
+      tags: article.tag_list || [],
       source: "dev.to" as const,
       coverImage: article.cover_image || undefined,
     }));
@@ -92,48 +72,9 @@ async function fetchDevTo(): Promise<BlogPost[]> {
   }
 }
 
-async function fetchGoogleDevBlog(): Promise<BlogPost[]> {
-  try {
-    const res = await fetch("https://developers.googleblog.com/feeds/posts/default?alt=json&max-results=10", {
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return [];
-    const data: GoogleBlogFeed = await res.json();
-    const entries = data.feed?.entry || [];
-    return entries.map((entry) => {
-      const content = entry.content?.$t || "";
-      const excerpt = content.replace(/<[^>]*>/g, "").slice(0, 200) + "...";
-      const tags = (entry.category || []).map((c) => c.term);
-      const pubDate = entry.published?.$t || entry.updated?.$t;
-      return {
-        title: entry.title?.$t || "",
-        excerpt,
-        date: pubDate
-          ? new Date(pubDate).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })
-          : "",
-        readTime: "5 min read",
-        url: entry.link?.find((l) => l.rel === "alternate")?.href || "",
-        tags: tags.length > 0 ? tags : ["Google", "Developers"],
-        source: "Google Developers" as const,
-        coverImage: undefined,
-      };
-    });
-  } catch {
-    return [];
-  }
-}
-
 export async function GET() {
-  const [devToPosts, googlePosts] = await Promise.all([
-    fetchDevTo(),
-    fetchGoogleDevBlog(),
-  ]);
-
-  const allPosts = [...devToPosts, ...googlePosts, ...localPosts].sort(
+  const devToPosts = await fetchDevTo();
+  const allPosts = [...devToPosts, ...localPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
